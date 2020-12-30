@@ -1,19 +1,48 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+const isProd = process.env.NODE_ENV === 'production';
+const isDev = !isProd;
+
+console.log('Is "prod":', isProd);
+console.log('Is "dev":', isDev);
+
+const filename = (ext) => (isDev ? `bundle.${ext}` : `bundle.[hash].${ext}`);
+
+const jsLoaders = () => {
+  const loaders = [
+    {
+      loader: 'babel-loader',
+      options: {
+        presets: ['@babel/preset-env'],
+      },
+    },
+  ];
+
+  if (isDev) {
+    loaders.push('eslint-loader');
+  }
+
+  return loaders;
+};
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
+
   mode: 'development',
+
   entry: {
-    filename: './index.js',
+    filename: ['@babel/polyfill', './index.js'],
   },
+
   output: {
-    filename: 'bundle.[hash].js',
+    filename: filename('js'),
     path: path.resolve(__dirname, 'dist'),
   },
+
   resolve: {
     extensions: ['.js'],
     alias: {
@@ -21,14 +50,23 @@ module.exports = {
       '@core': path.resolve(__dirname, 'src/core'),
     },
   },
+
+  devtool: isDev ? 'source-map' : false,
+
+  devServer: {
+    port: 9000,
+    hot: isDev,
+  },
+
   plugins: [
     new CleanWebpackPlugin(),
 
     new HTMLWebpackPlugin({
       template: 'index.html',
+      /* favicon: 'assets/favicon.ico', */
     }),
 
-    new CopyPlugin({
+    new CopyWebpackPlugin({
       patterns: [
         {
           from: path.resolve(__dirname, 'src/assets/favicon.ico'),
@@ -38,7 +76,7 @@ module.exports = {
     }),
 
     new MiniCssExtractPlugin({
-      filename: 'bundle.[hash].css',
+      filename: filename('css'),
     }),
   ],
 
@@ -46,17 +84,22 @@ module.exports = {
     rules: [
       {
         test: /\.s[ac]ss$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: isDev,
+              reloadAll: true,
+            },
+          },
+          'css-loader',
+          'sass-loader',
+        ],
       },
       {
         test: /\.m?js$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-          },
-        },
+        use: jsLoaders(),
       },
     ],
   },
