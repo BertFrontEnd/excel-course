@@ -76,6 +76,10 @@ module.exports = {
           from: path.resolve(__dirname, 'src/assets/favicon.svg'),
           to: path.resolve(__dirname, 'dist/assets'),
         },
+        {
+          from: path.resolve(__dirname, 'src/assets/reset.css'),
+          to: path.resolve(__dirname, 'dist/assets'),
+        },
       ],
     }),
 

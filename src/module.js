@@ -6,7 +6,7 @@ const start = async () => {
 
 start().then(console.log());
 
-console.log('2021');
+console.log('2021...');
 
 /* "webpack": "^5.11.1", */
 /* "webpack-cli": "^4.3.0", */

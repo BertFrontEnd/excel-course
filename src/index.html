@@ -4,9 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="stylesheet" href="assets/reset.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <title>Course for Senior Frontend Developer</title>
   </head>
   <body>
     <div id="app" class="continer"></div>
+
+    <div class="excel">
+      <section class="excel__header">
+        <input type="text" class="input" value="New Table" />
+        <div>
+          <div class="button">
+            <span class="material-icons"> delete_outline </span>
+          </div>
+          <div class="button">
+            <span class="material-icons"> exit_to_app </span>
+          </div>
+        </div>
+      </section>
+
+      <section class="excel__toolbar"></section>
+
+      <section class="excel__formula"></section>
+
+      <section class="excel__table"></section>
+    </div>
   </body>
 </html>
