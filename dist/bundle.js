@@ -10340,7 +10340,7 @@ var start = /*#__PURE__*/function () {
 }();
 
 start().then(console.log());
-console.log('0');
+console.log('2021');
 /* "webpack": "^5.11.1", */
 
 /* "webpack-cli": "^4.3.0", */
