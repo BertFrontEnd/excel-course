@@ -63,13 +63,17 @@ module.exports = {
 
     new HTMLWebpackPlugin({
       template: 'index.html',
-      /* favicon: 'assets/favicon.ico', */
+      minify: {
+        removeComments: isProd,
+        collapseWhitespace: isProd,
+      },
+      /* favicon: 'favicon.ico', */
     }),
 
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, 'src/assets/favicon.ico'),
+          from: path.resolve(__dirname, 'src/assets/favicon.svg'),
           to: path.resolve(__dirname, 'dist/assets'),
         },
       ],
