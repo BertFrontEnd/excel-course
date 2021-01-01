@@ -9,7 +9,7 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <title>Course for Senior Frontend Developer</title>
+    <title>Excel App</title>
   </head>
   <body>
     <div id="app" class="continer"></div>
@@ -19,17 +19,44 @@
         <input type="text" class="input" value="New Table" />
         <div>
           <div class="button">
-            <span class="material-icons"> delete_outline </span>
+            <span class="material-icons">delete_outline</span>
           </div>
           <div class="button">
-            <span class="material-icons"> exit_to_app </span>
+            <span class="material-icons">exit_to_app</span>
           </div>
         </div>
       </section>
 
-      <section class="excel__toolbar"></section>
+      <section class="excel__toolbar">
+        <div class="button">
+          <span class="material-icons">format_align_left</span>
+        </div>
 
-      <section class="excel__formula"></section>
+        <div class="button">
+          <span class="material-icons">format_align_center</span>
+        </div>
+
+        <div class="button">
+          <span class="material-icons">format_align_right</span>
+        </div>
+
+        <div class="button">
+          <span class="material-icons">format_bold</span>
+        </div>
+
+        <div class="button">
+          <span class="material-icons">format_italic</span>
+        </div>
+
+        <div class="button">
+          <span class="material-icons">format_underlined</span>
+        </div>
+      </section>
+
+      <section class="excel__formula">
+        <div class="info">⨍x</div>
+        <div class="input" contenteditable spellcheck="false"></div>
+      </section>
 
       <section class="excel__table"></section>
     </div>

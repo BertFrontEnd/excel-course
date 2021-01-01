@@ -1,2 +1,15 @@
-.excel__formula {
+.excel__toolbar {
+  position: absolute;
+  top: $header-height;
+  left: 0;
+  right: 0;
+  display: flex;
+  padding: 6px 10px;
+  height: $toolbar-height;
+  border-top: 1px solid $border-color-normal;
+  border-bottom: 1px solid $border-color-normal;
+
+  .button {
+    @include button();
+  }
 }
