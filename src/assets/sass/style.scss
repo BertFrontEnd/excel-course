@@ -7,11 +7,5 @@
 @import 'base/font';
 
 // Page
-@import 'page/main';
-@import 'page/secondary';
-
-// Component
-@import 'component/header';
-@import 'component/toolbar';
-@import 'component/formula';
-@import 'component/table';
+@import 'page/excel';
+@import 'page/dashboard';

@@ -1,0 +1,12 @@
+@import '../component/title';
+@import '../component/new';
+@import '../component/list';
+
+.dashboard {
+  position: relative;
+  height: 100%;
+  max-width: 100%;
+  font-family: $font-main;
+  color: #888888;
+  user-select: none;
+}

@@ -1,0 +1,30 @@
+.dashboard__new {
+  margin-top: $dashboard-header-height;
+  padding: 24px;
+  background-color: #dadce0;
+
+  .create {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+    height: 160px;
+    font-size: 7rem;
+    text-decoration: none;
+    text-align: center;
+    color: #000000;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    background-color: #ffffff;
+    transition: 0.3s;
+
+    &:hover {
+      color: #008000;
+      border-color: #008000;
+    }
+
+    span {
+      font-size: inherit;
+    }
+  }
+}

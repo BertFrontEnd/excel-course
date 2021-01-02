@@ -1,0 +1,14 @@
+// Component
+@import '../component/header';
+@import '../component/toolbar';
+@import '../component/formula';
+@import '../component/table';
+
+.excel {
+  position: relative;
+  height: 100%;
+  max-width: 100%;
+  font-family: $font-main;
+  color: #888888;
+  user-select: none;
+}
