@@ -10269,16 +10269,24 @@ try {
 
 /***/ }),
 
-/***/ "./assets/sass/style.scss":
-/*!********************************!*\
-  !*** ./assets/sass/style.scss ***!
-  \********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./components/excel/Excel.js":
+/*!***********************************!*\
+  !*** ./components/excel/Excel.js ***!
+  \***********************************/
+/*! exports provided: Excel */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// extracted by mini-css-extract-plugin
-    if(false) { var cssReload; }
-  
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Excel", function() { return Excel; });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Excel = function Excel(selector, options) {
+  _classCallCheck(this, Excel);
+
+  this.$el = document.querySelector(selector);
+  this.components = options.components || [];
+};
 
 /***/ }),
 
@@ -10291,61 +10299,28 @@ try {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./module */ "./module.js");
-/* harmony import */ var _module__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_module__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _assets_sass_style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assets/sass/style.scss */ "./assets/sass/style.scss");
-/* harmony import */ var _assets_sass_style_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_assets_sass_style_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_excel_Excel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/excel/Excel */ "./components/excel/Excel.js");
+/* harmony import */ var _sass_style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sass/style.scss */ "./sass/style.scss");
+/* harmony import */ var _sass_style_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_sass_style_scss__WEBPACK_IMPORTED_MODULE_1__);
 
 
-console.log('working...');
+var excel = new _components_excel_Excel__WEBPACK_IMPORTED_MODULE_0__["Excel"]('#app', {
+  components: []
+});
+console.log('Excel', excel);
 
 /***/ }),
 
-/***/ "./module.js":
-/*!*******************!*\
-  !*** ./module.js ***!
-  \*******************/
+/***/ "./sass/style.scss":
+/*!*************************!*\
+  !*** ./sass/style.scss ***!
+  \*************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-console.log('From module.js');
-
-var start = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-    return regeneratorRuntime.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return Promise.resolve('Async working...');
-
-          case 2:
-            return _context.abrupt("return", _context.sent);
-
-          case 3:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-
-  return function start() {
-    return _ref.apply(this, arguments);
-  };
-}();
-
-start().then(console.log());
-console.log('2021...');
-/* "webpack": "^5.11.1", */
-
-/* "webpack-cli": "^4.3.0", */
-
-/* "webpack-dev-server": "^3.11.1" */
+// extracted by mini-css-extract-plugin
+    if(false) { var cssReload; }
+  
 
 /***/ }),
 
