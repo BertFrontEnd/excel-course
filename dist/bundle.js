@@ -10279,11 +10279,13 @@ try {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Excel", function() { return Excel; });
+/* harmony import */ var _core_utilities_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../core/utilities/dom */ "./core/utilities/dom.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 
 var Excel = /*#__PURE__*/function () {
   function Excel(selector, options) {
@@ -10296,10 +10298,12 @@ var Excel = /*#__PURE__*/function () {
   _createClass(Excel, [{
     key: "getRoot",
     value: function getRoot() {
-      var $root = document.querySelector('div');
+      var $root = _core_utilities_dom__WEBPACK_IMPORTED_MODULE_0__["$"].create('div', 'excel');
       this.components.forEach(function (Component) {
-        var component = new Component();
-        $root.insertAdjacentHTML('beforeend', component.toHTML());
+        var $el = _core_utilities_dom__WEBPACK_IMPORTED_MODULE_0__["$"].create('section', Component.className);
+        var component = new Component($el);
+        $el.innerHTML = component.toHTML();
+        $root.append($el);
       });
       return $root;
     }
@@ -10348,6 +10352,8 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 var Formula = /*#__PURE__*/function (_ExcelComponent) {
   _inherits(Formula, _ExcelComponent);
@@ -10363,12 +10369,14 @@ var Formula = /*#__PURE__*/function (_ExcelComponent) {
   _createClass(Formula, [{
     key: "toHTML",
     value: function toHTML() {
-      return "<h1>Formula</h1>";
+      return "\n      <div class=\"info\">\u2A0Dx</div>\n      <div class=\"input\" contenteditable spellcheck=\"false\"></div>\n    ";
     }
   }]);
 
   return Formula;
 }(_core_ExcelComponent__WEBPACK_IMPORTED_MODULE_0__["ExcelComponent"]);
+
+_defineProperty(Formula, "className", 'excel__formula');
 
 /***/ }),
 
@@ -10405,6 +10413,8 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 var Header = /*#__PURE__*/function (_ExcelComponent) {
   _inherits(Header, _ExcelComponent);
@@ -10420,12 +10430,14 @@ var Header = /*#__PURE__*/function (_ExcelComponent) {
   _createClass(Header, [{
     key: "toHTML",
     value: function toHTML() {
-      return "<h1>Header</h1>";
+      return "\n      <input type=\"text\" class=\"input\" value=\"New Table\" />\n      <div>\n        <div class=\"button\">\n          <span class=\"material-icons\">delete_outline</span>\n        </div>\n        <div class=\"button\">\n          <span class=\"material-icons\">exit_to_app</span>\n        </div>\n      </div>\n    ";
     }
   }]);
 
   return Header;
 }(_core_ExcelComponent__WEBPACK_IMPORTED_MODULE_0__["ExcelComponent"]);
+
+_defineProperty(Header, "className", 'excel__header');
 
 /***/ }),
 
@@ -10462,6 +10474,8 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 var Table = /*#__PURE__*/function (_ExcelComponent) {
   _inherits(Table, _ExcelComponent);
@@ -10477,12 +10491,14 @@ var Table = /*#__PURE__*/function (_ExcelComponent) {
   _createClass(Table, [{
     key: "toHTML",
     value: function toHTML() {
-      return "<h1>Table</h1>";
+      return "\n      <div class=\"row\">\n        <div class=\"row-info\"></div>\n        <div class=\"row-data\">\n          <div class=\"column\">A</div>\n          <div class=\"column\">B</div>\n          <div class=\"column\">C</div>\n        </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"row-info\">1</div>\n        <div class=\"row-data\">\n          <div class=\"cell selected\" contenteditable>A1</div>\n          <div class=\"cell\" contenteditable>B1</div>\n          <div class=\"cell\" contenteditable>C1</div>\n        </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"row-info\">2</div>\n        <div class=\"row-data\">\n          <div class=\"cell\" contenteditable>A2</div>\n          <div class=\"cell\" contenteditable>B2</div>\n          <div class=\"cell\" contenteditable>C2</div>\n        </div>\n      </div>\n    ";
     }
   }]);
 
   return Table;
 }(_core_ExcelComponent__WEBPACK_IMPORTED_MODULE_0__["ExcelComponent"]);
+
+_defineProperty(Table, "className", 'excel__table');
 
 /***/ }),
 
@@ -10519,6 +10535,8 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 var Toolbar = /*#__PURE__*/function (_ExcelComponent) {
   _inherits(Toolbar, _ExcelComponent);
@@ -10534,12 +10552,14 @@ var Toolbar = /*#__PURE__*/function (_ExcelComponent) {
   _createClass(Toolbar, [{
     key: "toHTML",
     value: function toHTML() {
-      return "<h1>Toolbar</h1>";
+      return "\n      <div class=\"button\">\n        <span class=\"material-icons\">format_align_left</span>\n      </div>\n      <div class=\"button\">\n        <span class=\"material-icons\">format_align_center</span>\n      </div>\n      <div class=\"button\">\n        <span class=\"material-icons\">format_align_right</span>\n      </div>\n      <div class=\"button\">\n        <span class=\"material-icons\">format_bold</span>\n      </div>\n      <div class=\"button\">\n        <span class=\"material-icons\">format_italic</span>\n      </div>\n      <div class=\"button\">\n        <span class=\"material-icons\">format_underlined</span>\n      </div>\n    ";
     }
   }]);
 
   return Toolbar;
 }(_core_ExcelComponent__WEBPACK_IMPORTED_MODULE_0__["ExcelComponent"]);
+
+_defineProperty(Toolbar, "className", 'excel__toolbar');
 
 /***/ }),
 
@@ -10555,9 +10575,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DomListener", function() { return DomListener; });
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-// eslint-disable-next-line require-jsdoc
-var DomListener = function DomListener() {
+var DomListener = function DomListener($root) {
   _classCallCheck(this, DomListener);
+
+  if (!$root) {
+    throw new Error("No $root provided for DomListener");
+  }
+
+  this.$root = $root;
 };
 
 /***/ }),
@@ -10620,6 +10645,39 @@ var ExcelComponent = /*#__PURE__*/function (_DomListener) {
 
 /***/ }),
 
+/***/ "./core/utilities/dom.js":
+/*!*******************************!*\
+  !*** ./core/utilities/dom.js ***!
+  \*******************************/
+/*! exports provided: $ */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "$", function() { return $; });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Dom = function Dom() {
+  _classCallCheck(this, Dom);
+};
+
+var $ = function $() {
+  return new Dom();
+};
+
+$.create = function (tagName) {
+  var className = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  var el = document.createElement(tagName);
+
+  if (className) {
+    el.classList.add(className);
+  }
+
+  return el;
+};
+
+/***/ }),
+
 /***/ "./index.js":
 /*!******************!*\
   !*** ./index.js ***!
@@ -10645,7 +10703,7 @@ __webpack_require__.r(__webpack_exports__);
 var excel = new _components_excel_Excel__WEBPACK_IMPORTED_MODULE_0__["Excel"]('#app', {
   components: [_components_header_Header__WEBPACK_IMPORTED_MODULE_1__["Header"], _components_toolbar_Toolbar__WEBPACK_IMPORTED_MODULE_2__["Toolbar"], _components_formula_Formula__WEBPACK_IMPORTED_MODULE_3__["Formula"], _components_table_Table__WEBPACK_IMPORTED_MODULE_4__["Table"]]
 });
-console.log(excel.render());
+excel.render();
 
 /***/ }),
 
