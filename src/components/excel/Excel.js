@@ -1,7 +1,7 @@
 import { $ } from '../../core/utilities/dom';
 export class Excel {
   constructor(selector, options) {
-    this.$el = document.querySelector(selector);
+    this.$el = $(selector);
     this.components = options.components || [];
   }
 
@@ -11,7 +11,7 @@ export class Excel {
     this.components.forEach((Component) => {
       const $el = $.create('section', Component.className);
       const component = new Component($el);
-      $el.innerHTML = component.toHTML();
+      $el.html(component.toHTML());
       $root.append($el);
     });
 
