@@ -43,5 +43,6 @@ $.create = (tagName, className = '') => {
   if (className) {
     el.classList.add(className);
   }
+  console.log($(el));
   return $(el);
 };
