@@ -13,7 +13,8 @@
       "error",
       "after",
       { "overrides": { "?": "before", ":": "before" } }
-    ]
+    ],
+    "indent": "off"
   },
   "extends": ["eslint:recommended", "google"]
 }

@@ -19,6 +19,10 @@ class Dom {
     return this;
   }
 
+  on(eventType, callback) {
+    this.$el.addEventListener(eventType, callback);
+  }
+
   append(node) {
     if (node instanceof Dom) {
       node = node.$el;
@@ -43,6 +47,6 @@ $.create = (tagName, className = '') => {
   if (className) {
     el.classList.add(className);
   }
-  console.log($(el));
+  /* console.log($(el)); */
   return $(el);
 };
